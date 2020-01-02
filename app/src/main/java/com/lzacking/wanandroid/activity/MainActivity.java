@@ -16,6 +16,7 @@ import com.lzacking.wanandroid.fragment.HomeFragment;
 import com.lzacking.wanandroid.fragment.InvestFragment;
 import com.lzacking.wanandroid.fragment.MeFragment;
 import com.lzacking.wanandroid.fragment.MoreFragment;
+import com.lzacking.wanandroid.util.ActivityManager;
 import com.lzacking.wanandroid.util.UIUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        // 将当前的activity添加到ActivityManager中
+        ActivityManager.getInstance().add(this);
         // 默认显示首页
         setSelect(0);
     }

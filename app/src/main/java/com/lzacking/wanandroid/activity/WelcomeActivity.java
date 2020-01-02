@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.lzacking.wanandroid.R;
+import com.lzacking.wanandroid.util.ActivityManager;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +40,8 @@ public class WelcomeActivity extends AppCompatActivity {
         actionBar.hide();
 
         ButterKnife.bind(this);
+        // 将当前的activity添加到ActivityManager中
+        ActivityManager.getInstance().add(this);
         // 提供启动动画
         setAnimation();
     }
@@ -55,7 +58,9 @@ public class WelcomeActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+                // finish(); // 销毁当前页面
+                // 结束activity的显示，并从栈空间中移除
+                ActivityManager.getInstance().remove(WelcomeActivity.this);
             }
         }, 3000);
 
