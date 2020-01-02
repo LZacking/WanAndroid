@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lzacking.wanandroid.R;
+import com.lzacking.wanandroid.util.UIUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +27,8 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.fragment_home, null);
+        // View view = View.inflate(getActivity(), R.layout.fragment_home, null);
+        View view = UIUtils.getView(R.layout.fragment_home);
         ButterKnife.bind(this, view);
         // 初始化title
         initTitle();

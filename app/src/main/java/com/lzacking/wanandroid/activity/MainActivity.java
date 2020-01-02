@@ -16,6 +16,7 @@ import com.lzacking.wanandroid.fragment.HomeFragment;
 import com.lzacking.wanandroid.fragment.InvestFragment;
 import com.lzacking.wanandroid.fragment.MeFragment;
 import com.lzacking.wanandroid.fragment.MoreFragment;
+import com.lzacking.wanandroid.util.UIUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 transaction.show(homeFragment);
                 ivMainHome.setImageResource(R.drawable.bottom02);
-                tvMainHome.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvMainHome.setTextColor(UIUtils.getColor(R.color.home_back_selected));
                 break;
 
             case 1:
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 transaction.show(investFragment);
                 ivMainInvest.setImageResource(R.drawable.bottom04);
-                tvMainInvest.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvMainInvest.setTextColor(UIUtils.getColor(R.color.home_back_selected));
                 break;
 
             case 2:
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 transaction.show(meFragment);
                 ivMainMe.setImageResource(R.drawable.bottom06);
-                tvMainMe.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvMainMe.setTextColor(UIUtils.getColor(R.color.home_back_selected));
                 break;
 
             case 3:
@@ -135,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 transaction.show(moreFragment);
                 ivMainMore.setImageResource(R.drawable.bottom08);
-                tvMainMore.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvMainMore.setTextColor(UIUtils.getColor(R.color.home_back_selected));
                 break;
 
         }
@@ -167,10 +168,10 @@ public class MainActivity extends AppCompatActivity {
         ivMainMe.setImageResource(R.drawable.bottom05);
         ivMainMore.setImageResource(R.drawable.bottom07);
 
-        tvMainHome.setTextColor(getResources().getColor(R.color.home_back_unselected));
-        tvMainInvest.setTextColor(getResources().getColor(R.color.home_back_unselected));
-        tvMainMe.setTextColor(getResources().getColor(R.color.home_back_unselected));
-        tvMainMore.setTextColor(getResources().getColor(R.color.home_back_unselected));
+        tvMainHome.setTextColor(UIUtils.getColor(R.color.home_back_unselected));
+        tvMainInvest.setTextColor(UIUtils.getColor(R.color.home_back_unselected));
+        tvMainMe.setTextColor(UIUtils.getColor(R.color.home_back_unselected));
+        tvMainMore.setTextColor(UIUtils.getColor(R.color.home_back_unselected));
     }
 
     private boolean flag = true;
