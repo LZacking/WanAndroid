@@ -18,7 +18,9 @@ public class MyApplication extends Application {
         context = this.getApplicationContext();
         handler = new Handler();
         mainThread = Thread.currentThread(); // 实例化当前Application的线程即为主线程
-        mainThreadId = android.os.Process.myPid();
+        mainThreadId = android.os.Process.myPid(); // 获取当前线程的id
+        // 设置未捕获异常的处理器
+        CrashHandler.getInstance().init();
     }
 
 }
