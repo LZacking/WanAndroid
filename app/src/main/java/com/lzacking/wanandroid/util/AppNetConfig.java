@@ -2,7 +2,7 @@ package com.lzacking.wanandroid.util;
 
 public class AppNetConfig {
 
-    public static final String IPADDRESS = "192.168.111.111";
+    public static final String IPADDRESS = "172.27.35.1";
 
     public static final String BASE_URL = "http://" + IPADDRESS + ":8080/P2PInvest/";
 
