@@ -2,6 +2,7 @@ package com.lzacking.wanandroid.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.lzacking.wanandroid.R;
 import com.lzacking.wanandroid.bean.Image;
 import com.lzacking.wanandroid.bean.Index;
 import com.lzacking.wanandroid.bean.Product;
+import com.lzacking.wanandroid.ui.RoundProgress;
 import com.lzacking.wanandroid.util.AppNetConfig;
 import com.lzacking.wanandroid.util.UIUtils;
 import com.squareup.picasso.Picasso;
@@ -49,6 +51,22 @@ public class HomeFragment extends Fragment {
     TextView mTvHomeProduct;
     @Bind(R.id.tv_home_yearrate)
     TextView mTvHomeYearrate;
+    @Bind(R.id.roundPro_home)
+    RoundProgress mRoundProHome;
+
+    private int currentProress;
+
+    private Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mRoundProHome.setMax(100);
+            for (int i = 0; i < currentProress; i++) {
+                mRoundProHome.setProgress(i + 1);
+                SystemClock.sleep(20);
+                mRoundProHome.postInvalidate();
+            }
+        }
+    };
 
     @Nullable
     @Override
@@ -101,6 +119,10 @@ public class HomeFragment extends Fragment {
                 Log.i("info", "onSuccess: " + product.name);
                 mTvHomeYearrate.setText(product.yearRate + "%");
 
+                // 更新数据中的进度值
+                currentProress = Integer.parseInt(index.product.progress);
+                new Thread(mRunnable).start();
+
                 // 设置banner样式
                 mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
                 // 设置图片加载器
@@ -114,7 +136,7 @@ public class HomeFragment extends Fragment {
                 // 设置banner动画效果
                 mBanner.setBannerAnimation(Transformer.DepthPage);
                 // 设置标题集合(当banner样式有显示title时)
-                String[] titles = new String[] {"分享砍学费", "人脉总动员", "想不到你是这样的app", "购物节，爱不单行"};
+                String[] titles = new String[]{"分享砍学费", "人脉总动员", "想不到你是这样的app", "购物节，爱不单行"};
                 mBanner.setBannerTitles(Arrays.asList(titles));
                 // 设置自动轮播，默认为true
                 mBanner.isAutoPlay(true);
